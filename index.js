@@ -23,6 +23,14 @@ botaoAdicionar.addEventListener("click",(evento) => {
     const nomeItem = document.createElement("p");
     nomeItem.innerText = inputItem;
 
+    inputCheckBox.addEventListener("click", function(){
+        if(inputCheckBox.checked) {
+            nomeItem.style.textDecoration = "line-through";
+        }  else {
+            nomeItem.style.textDecoration = "none";
+        }
+    })
+
     
     containerItemDaLista.appendChild(inputCheckBox);
     containerItemDaLista.appendChild(nomeItem);
@@ -46,11 +54,19 @@ botaoAdicionar.addEventListener("click",(evento) => {
 
     listaDeCompras.appendChild(itemDaLista);
 
-
-
-
-
-
+    veridicarListaVazia();
 
 }) 
 
+const mensagemListaVazia = document.querySelector(".mensagem-lista-vazia");
+
+function veridicarListaVazia () {
+    const itensDalista = listaDeCompras.querySelectorAll("li");
+    if(itensDalista.length === 0) {
+        mensagemListaVazia.style.display = "block";
+    } else {
+        mensagemListaVazia.style.display = "none";
+    }
+}
+
+veridicarListaVazia();
